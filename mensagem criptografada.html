@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Mensagem Criptografada</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script lang="JavaScript">
+        function ok(){
+            var msn, i;
+
+            msn = document.getElementById("msn").value;
+
+            document.getElementById("display").value = "";
+
+            for(i = 0; i <= msn.length; i++)
+            {
+                if(msn.charCodeAt(i) >= 65 && msn.charCodeAt(i) <= 90)
+                {
+
+                    document.getElementById("display").value += msn.charCodeAt(i) - 26;
+                }
+
+                if(msn.charCodeAt(i) >= 97 && msn.charCodeAt(i) <= 122)
+                {
+
+                    document.getElementById("display").value += msn.charCodeAt(i) + 26;
+                }
+            }
+        }
+
+        function trocar(){
+            var msn, i, aux;
+
+            aux = "";
+            msn = document.getElementById("msn").value;
+
+            if(document.getElementById("display").value == "")
+            {
+                document.getElementById("display").value = "Erro";
+            }
+            else
+            {
+                aux = document.getElementById("display").value;
+                document.getElementById("display").value = msn;
+                document.getElementById("msn").value = aux;
+            }
+        }
+    </script>
+</head>
+<body>
+    Digite Aqui:<input type="text" id="msn">
+    Código:<input type="text" id="display" readonly><br>
+    <input type="button" value="decodificar" onclick="ok();">
+    <input type="button" value="descodificar" onclick="trocar();">
+</body>
+</html>
